@@ -110,6 +110,12 @@ function menu(){
 }
 
 ## BEGIN SCRIPT ##
+which aws >> /dev/null
+if [ ! $? -eq 0 ]; then
+  echo -e "\nCannot detect awscli commmands. Aborting!\n"
+  exit 1
+fi
+
 for file in ${params} ${key}.pem; do
   if [ -e ${file} ]; then rm -f ${params}; fi
 done
